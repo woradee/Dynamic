@@ -1,0 +1,26 @@
+@(myForm:Form[Movie],sweaterList:List[Sweater])
+
+@import helper._;
+
+    <h1>รับข้อมูลใหม่</h1>
+
+    @form(action = routes.Application.createMovie(),'class->"form-control"){
+
+    @inputText(myForm("id"),'_label->"รหัสภาพยนต์",'size->"10",'maxlength->"7")
+    @inputText(myForm("title"),'_label->"ชื่อเรื่องภาพยนต์",'size->"50",'maxlength->"40")
+    @inputText(myForm("actor"),'_label->"นักแสดงนำฝ่ายชาย",'size->"40",'maxlength->"30")
+    @inputText(myForm("actress"),'_label->"นักแสดงนำฝ่ายหญิง",'size->"40",'maxlength->"30")
+    @inputText(myForm("Year"),'_label->"ปี",'size->"10",'maxlength->"4")
+
+    @select(myForm("sweater.brand"),options=sweaterList.map(sweater=>sweater.getId->sweater.getBrand),'_label->"ยี่ห้อเสื้อ")
+
+    <input type="submit" value="บันทึก" class="btn btn-success">
+    <input type="reset" value="ลบ" class="btn btn-danger">
+}
+
+    @if(flash.containsKey("errMessage")){
+    <div class="alert alert-danger">
+        <strong>Error!</strong>
+        @flash.get("errMessage")
+    </div>
+    }

@@ -1,0 +1,56 @@
+
+@(myForm:Form[Csu])
+@import helper._;
+@import controllers.routes
+    <!--(id:String,brand:String,producer:String,typesuit:String,color:String,pattern:String,texture:String,price:Double,treatment:String)-->
+    <html>
+        <head>
+
+            <title>My Helper Form</title>
+                <!--<link rel="stylesheet" href="/assets/stylesheets/bootstrap/css/bootstrap.css">-->
+            <style>
+
+            body {
+                font-family: AngsanaUPC;
+                font-size: 18;
+                margin: 0;
+            }
+            </style>
+
+        </head>
+
+        <body style="background-color: rgba(47, 83, 255, 0.32)">
+            <h1 align="center">Post Suit Helper</h1>
+            <div class="w3-table w3-striped w3-bordered w3-xlarge ">
+
+            @helper.form(action = routes.Application.suit_post_helper(),'class->"from-control")  {
+                @inputText(myForm("id"),'_label ->"รหัสสินค้า", 'size->"50" ,'maxlength->"80", 'required->"required")
+
+                @inputRadioGroup(myForm("brand"),options=Seq ("SUITCUBE"->"SUITCUBE","SUIT SELECT"->"SUIT SELECT","ZARA"->"ZARA","POEM"->"POEM"
+                ),'_label->"ยี่ห้อ")
+
+                @inputText(myForm("producer"),'_label ->"เจ้าของแบรนด์", 'size->"50" ,'maxlength->"30", 'required->"required")
+
+                @select(myForm("typesuit"),options=Seq("Single Breasted"->"Single Breasted","Double Breasted"->"Double Breasted","Tuxedo"->"Tuxedo"
+                ),'_label->"ประเภท")
+
+                @select(myForm("color"),options=Seq("Gray"->"Gray","Black"->"Black","Pink"->"Pink","Coral Black"->"Coral Black","Burgundy"->"Burgundy"
+                ),'_label->"สี")
+
+                @select(myForm("pattern"),options=Seq("No Pattern"->"No Pattern","Tartan"->"Tartan","Seersucker"->"Seersucker","Windowpane"->"Windowpane"
+                    ,"Houndstooth"->"Houndstooth"),'_label->"ลวดลาย")
+
+                @inputRadioGroup(myForm("texture"),options=Seq ("Linen"->"Linen","Cotton"->"Cotton","Wool"->"Wool"),'_label->"เนื้อผ้า")
+
+                @inputText(myForm("price"),'_label ->"ราคา", 'size->"10",'required->"required")
+
+                @inputText(myForm("treatment"),'_label ->"การดูแล", 'cols->"60" , 'rows->"10")
+
+
+                <input type="submit" value="บันทึก" class="btn btn-success">
+                <input type="reset" value="เคลียร์" class="btn btn-danger">
+                }
+            </div>
+
+        </body>
+    </html>
