@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by Woradee Jongphaet on 11-Sep-19.
  */
+
 @Entity
 @Table(name = "tbMovie")
 public class Movie extends Model{
@@ -80,6 +81,7 @@ public class Movie extends Model{
     public void setSweater(Sweater sweater) {
         this.sweater = sweater;
     }
+
     public static Finder<String,Movie>finder = new Finder<String, Movie>(String.class,Movie.class);
     public static List<Movie>list(){
         return  finder.all();
@@ -87,9 +89,7 @@ public class Movie extends Model{
     public  static  void  create(Movie movie){
         movie.save();
     }
-    public  static  void  update(Movie movie){
-        movie.update();
-    }
+    public  static  void  update(Movie movie){movie.update();}
     public  static  void  delete(Movie movie){
         movie.delete();
     }

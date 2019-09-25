@@ -1,9 +1,6 @@
 package controllers;
 
-import models.Csu;
-import models.Movie;
-import models.Suit;
-import models.Sweater;
+import models.*;
 import play.api.templates.Html;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -34,6 +31,10 @@ public class Application extends Controller {
     public static  List<Sweater> sweaterList = new ArrayList<Sweater>();
     public static Form<Sweater> sweaterForm = Form.form(Sweater.class);
     public  static Sweater sweater;
+
+    public static List<Movie>movieList = new ArrayList<Movie>();
+    public static Form<Movie>movieForm = Form.form(Movie.class);
+    public static Movie movie;
 
 
     public  static  Result showSuit(){
@@ -193,40 +194,77 @@ public class Application extends Controller {
     }
 
 
-    public static List<Movie>movieList = new ArrayList<Movie>();
-    public static Form<Movie>movieForm = Form.form(Movie.class);
-    public static Movie movie;
+
     public static  Result listMovie(){
-        movieList=Movie.list();
+        movieList= Movie.list();
         return main(listMovie.render(movieList));
     }
     public static  Result newMovie(){
-        sweaterList=sweater.list();
+        sweaterList=Sweater.list();
         movieForm=Form.form(Movie.class);
         return main(newMovie.render(movieForm,sweaterList));
     }
     public static  Result createMovie(){
         Form<Movie> newForm =movieForm.bindFromRequest();
+        sweaterList=Sweater.list();
         if (newForm.hasErrors()){
             return main(newMovie.render(newForm,sweaterList));
-        }else {
+        }else{
             movie =newForm.get();
             if (Movie.finder.byId(movie.getId())!= null){
                 flash("errMessage","ท่านกรอกข้อมูลไม่ถูกต้อง/ไม่สมบูรณ์ กรุณาตรวจสอบและแก้ไขใหม่ให้ถูกต้อง");
                 return main(newMovie.render(newForm,sweaterList));
             }else {
-                movie.save();
+                Movie.create(movie);
                 return listMovie();
             }
         }
     }
-    public static  Result editMovie(){
-        return ok();
+
+
+    public static  Result editMovie(String id){
+        sweaterList=Sweater.list();
+        movie = Movie.finder.byId(id);
+        if (movie == null){
+            return listMovie();
+        }else {
+            movieForm=Form.form(Movie.class).fill(movie);
+            return main(editMovie.render(movieForm,sweaterList));
+        }
     }
     public static  Result updateMovie(){
-        return ok();
+        Form<Movie> updateForm =movieForm.bindFromRequest();
+         sweaterList=Sweater.list();
+         if (updateForm.hasErrors()){
+             flash("errMessage","ท่านกรอกข้อมูลไม่ถูกต้อง/ไม่สมบูรณ์ กรุณาตรวจสอบและแก้ไขใหม่ให้ถูกต้อง");
+             return main(editMovie.render(updateForm,sweaterList));
+         }else {
+             movie=updateForm.get();
+             Movie.update(movie);
+             return listMovie();
+         }
     }
     public static  Result deleteMovie(String id){
-        return ok();
+        movie = Movie.finder.byId(id);
+        if (movie != null){
+            Movie.delete(movie);
+        }
+        return listMovie();
+    }
+
+
+
+    public static Result frmProduct(){
+        return ok(frmProduct.render());
+    }
+    public static  Result postProduct(){
+        DynamicForm pForm = play.data.Form.form().bindFromRequest();
+        Product product = new Product();
+        product.setId(pForm.get("id"));
+        product.setName(pForm.get("name"));
+        product.setPrice(Double.parseDouble(pForm.get("price")));
+        product.setAmount(Double.parseDouble(pForm.get("amount")));
+
+        return main(showProduct.render(product));
     }
 }

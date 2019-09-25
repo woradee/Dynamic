@@ -1,5 +1,6 @@
 @(movieList:List[Movie])
-: Unit =: Unit = <h1 align="center">Movie List</h1>
+<h1 align="center">Movie List</h1>
+
 <table class ="w3-table w3-striped w3-border w3-xlarge">
     <tr>
         <th>รหัสภาพยนต์</th>
@@ -8,8 +9,8 @@
         <th>นักแสดงนำฝ่ายหญิง</th>
         <th>ปี</th>
         <th>บริษัทผู้ผลิต</th>
-        <th>ที่อยู่</th>
-        <th><a href= "/newMovie" class="btn btn-info">เพิ่มข้อมูล</a></th>
+        <th>ประเภท</th>
+        <th><a href= "/newMovie" class="w3-button w3-blue">เพิ่มข้อมูล</a></th>
     </tr>
     @for(movie <- movieList){
         <tr>
@@ -19,14 +20,12 @@
             <td>@movie.getActress</td>
             <td>@movie.getYear</td>
 
-            <td>@movie.getSweater.getBrand </td>
+            <td>@movie.getSweater.getBrand</td>
             <td>@movie.getSweater.getType </td>
 
-
             <td>
-                <a href="/editMovie/@movie.getId" class="btn btn-info">แก้ไข</a>
-                <a href="/deleteMovie/@movie.getId" class="btn btn-danger" onclick="return confirm('โปรดยืนยันการลบข้อมูลภาพยนต์ที่เลือก?')">ลบ</a>
-
+                <a href="/editMovie/@movie.getId" class="w3-button w3-pale-green">แก้ไข</a>
+                <a href="/deleteMovie/@movie.getId" class="w3-button w3-pale-red" onclick="return confirm('โปรดยืนยันการลบข้อมูลภาพยนต์ที่เลือก?')">ลบ</a>
             </td>
         </tr>
     }

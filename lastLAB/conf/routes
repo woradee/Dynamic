@@ -38,10 +38,13 @@ GET     /listMovie                     controllers.Application.listMovie()
 GET     /newMovie                      controllers.Application.newMovie()
 POST    /createMovie                   controllers.Application.createMovie()
 
-GET     /editMovie/:id                 controllers.Application.editSweater(id:String)
+GET     /editMovie/:id                 controllers.Application.editMovie(id:String)
 POST    /updateMovie                   controllers.Application.updateMovie()
 
 GET     /deleteMovie/:id               controllers.Application.deleteMovie(id:String)
+
+GET     /product                           controllers.Application.frmProduct()
+POST    /postProduct                        controllers.Application.postProduct()
 
 
 # Map static resources from the /public folder to the /assets URL path

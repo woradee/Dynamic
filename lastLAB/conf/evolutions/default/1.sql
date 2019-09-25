@@ -23,6 +23,16 @@ create table tbSweater (
   constraint pk_tbSweater primary key (id))
 ;
 
+create table tbUser (
+  id                        varchar(255) not null,
+  name                      varchar(255),
+  surname                   varchar(255),
+  address                   varchar(255),
+  status                    varchar(255),
+  password                  varchar(255),
+  constraint pk_tbUser primary key (id))
+;
+
 alter table tbMovie add constraint fk_tbMovie_sweater_1 foreign key (sweater_id) references tbSweater (id) on delete restrict on update restrict;
 create index ix_tbMovie_sweater_1 on tbMovie (sweater_id);
 
@@ -35,6 +45,8 @@ SET FOREIGN_KEY_CHECKS=0;
 drop table tbMovie;
 
 drop table tbSweater;
+
+drop table tbUser;
 
 SET FOREIGN_KEY_CHECKS=1;
 
