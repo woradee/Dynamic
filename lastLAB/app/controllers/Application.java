@@ -12,9 +12,7 @@ import java.util.List;
 
 public class Application extends Controller {
 
-    public static Result main(Html content) {
-        return ok(main.render(content));
-    }
+    public static Result main(Html content) {return ok(main.render(content));}
     public static Result index() {return main(bghome.render());}
     public static Result bghome() {return main(bghome.render());}
     public static Result about() {return main(about.render());}
