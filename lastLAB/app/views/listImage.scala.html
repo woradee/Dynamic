@@ -1,0 +1,47 @@
+@(showeim : List[Upimage])
+<link rel="stylesheet" href="/assets/stylesheets/tabel.css">
+<script type='text/javascript'>
+        function preview_image(event){
+            var reader = new FileReader();
+            reader.onload = function()
+            {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</script>
+<body>
+    <h1>ข้อมูลรูปภาพ</h1>
+    <table class="container">
+        <thead>
+            <tr>
+
+                <th> <h1>รหัสภาพ</h1></th>
+                <th> <h1>ชื่อภาพ</h1></th>
+                <th> <h1>รายละเอียด</h1></th>
+                <th> <h1>วัน/เดือน/ปี</h1></th>
+                <th><h1>รูปภาพ</h1></th>
+                <th> <h1><a href="/newtbimage"class="btn btn-info">เพิ่มข้อมูล</a> </h1></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for(image <- showeim ){
+                <tr>
+                    <td>@image.getImagejpg</td>
+                    <td>@image.getNameim</td>
+                    <td>@image.getTxtimage</td>
+                    <td>@image.getDataim</td>
+                    <td><img src="/assets/images/@image.getPic" style="width:120px;height: 120px"> </td>
+
+                    <td> <a href="/edittbimage/@image.getImagejpg"class="btn btn-info">แก้ไข</a>
+                        <a href="/deletetbimage/@image.getImagejpg" class="btn btn-danger" onclick="return confirm('โปรดยืนยันการลบข้อมูล???')">ลบ</a>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

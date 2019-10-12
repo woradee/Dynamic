@@ -1,0 +1,23 @@
+@()
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div class="container">
+            <form action="/postProduct" method="post">
+                <label style="font-size: 18%">ID</label>
+                <input style="font-size: 18%" name="id" type="text" class="form-control" required>
+                <label style="font-size: 18%">Name</label>
+                <input style="font-size: 18%" name="name" type="text" class="form-control" required>
+                <label style="font-size: 18%">Price</label>
+                <input style="font-size: 18%" name="price" type="number" class="form-control">
+                <label style="font-size: 18%">Amount</label>
+                <input style="font-size: 18%" name="amount" type="number" class="form-control">
+
+                <br>
+                <input type="submit" class="btn btn-success" value="Save">
+            </form>
+        </div>
+    </body>
+</html>

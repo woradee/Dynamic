@@ -1,0 +1,51 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                              controllers.Application.bghome()
+GET     /home                          controllers.Application.bghome()
+GET     /education                     controllers.Application.education()
+GET     /gallery                       controllers.Application.gallery()
+GET     /goal                          controllers.Application.goal()
+GET     /travel                        controllers.Application.travel()
+GET     /interests                     controllers.Application.interests()
+GET     /about                         controllers.Application.about()
+GET     /contact                       controllers.Application.contact()
+
+GET     /showSuit                      controllers.Application.showSuit()
+GET     /showSuitList                  controllers.Application.showSuitList()
+
+GET     /frmSuit                       controllers.Application.frmPostSuit()
+POST    /postSuit                      controllers.Application.showPostSuit()
+
+GET     /suit_form_helper              controllers.Application.suit_form_helper()
+POST    /suit_post_helper              controllers.Application.suit_post_helper()
+
+
+GET     /listSweater                   controllers.Application.listSweater()
+
+GET     /newSweater                    controllers.Application.newSweater()
+POST    /createSweater                 controllers.Application.createSweater()
+
+GET     /editSweater/:id               controllers.Application.editSweater(id:String)
+POST    /updateSweater                 controllers.Application.updateSweater()
+
+GET     /deleteSweater/:id             controllers.Application.deleteSweater(id:String)
+
+
+GET     /listMovie                     controllers.Application.listMovie()
+GET     /newMovie                      controllers.Application.newMovie()
+POST    /createMovie                   controllers.Application.createMovie()
+
+GET     /editMovie/:id                 controllers.Application.editMovie(id:String)
+POST    /updateMovie                   controllers.Application.updateMovie()
+
+GET     /deleteMovie/:id               controllers.Application.deleteMovie(id:String)
+
+GET     /product                           controllers.Application.frmProduct()
+POST    /postProduct                        controllers.Application.postProduct()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

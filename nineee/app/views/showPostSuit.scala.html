@@ -1,0 +1,81 @@
+@(csu: Csu)
+<!--csu:Csu-->
+<!--(id:String,brand:String,producer:String,typesuit:String,color:String,pattern:String,texture:String,price:Double,treatment:String)-->
+<html>
+    <head>
+        <title>Show Post Suit</title>
+        <!--link rel="stylesheet" href="/assets/stylesheets/bootstrap/css/bootstrap.css">-->
+        <style>
+        body {
+            font-family: AngsanaUPC;
+            font-size: 18;
+            margin: 0;
+        }
+        </style>
+    </head>
+
+
+    <body>
+        <h1 align="center">Dynamic Post Suit</h1>
+        <div class="container" >
+            <div class="row">
+                <div class="col-sm-2" style="background-color: gainsboro" ></div>
+
+                <div class="col-sm-8" style="background-color: rgba(255, 3, 0, 0.32)">
+                    <table class="w3-table w3-striped w3-border w3-xlarge"> <!--class="w3-table w3-striped w3-border w3-large"-->
+                        <!--<h1 align="center">Post Suit</h1>-->
+                        <tr>
+                            <th>รหัสสินค้า</th>
+                            <td>@csu.getId</td>
+                        </tr>
+
+                        <tr>
+                            <th>ยี่ห้อ</th>
+                            <td>@csu.getBrand</td>
+                        </tr>
+
+                        <tr>
+                            <th>เจ้าของแบรนด์</th>
+                            <td>@csu.getProducer</td>
+                        </tr>
+
+                        <tr>
+                            <th>ประเภท</th>
+                            <td>@csu.getTypesuit</td>
+                        </tr>
+
+                        <tr>
+                            <th>สี</th>
+                            <td>@csu.getColor</td>
+                        </tr>
+
+                        <tr>
+                            <th>รายละเอียด</th>
+                            <td>@csu.getPattern</td>
+                        </tr>
+
+                        <tr>
+                            <th>เนื้อผ้า</th>
+                            <td>@csu.getTexture</td>
+                        </tr>
+
+                        <tr>
+                            <th>ราคา</th>
+                            <td>@csu.getPrice</td>
+                        </tr>
+
+                        <tr>
+                            <th>การรักษา</th>
+                            <td>@csu.getTreatment</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+                <div class="col-sm-2" style="background-color: gainsboro"></div>
+            </div>
+        </div>
+    </body>
+
+
+</html>

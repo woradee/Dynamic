@@ -43,6 +43,10 @@ POST    /updateMovie                   controllers.Application.updateMovie()
 
 GET     /deleteMovie/:id               controllers.Application.deleteMovie(id:String)
 
+
+
+
+
 GET     /product                           controllers.Application.frmProduct()
 POST    /postProduct                        controllers.Application.postProduct()
 

@@ -23,14 +23,13 @@ create table tbSweater (
   constraint pk_tbSweater primary key (id))
 ;
 
-create table tbUser (
-  id                        varchar(255) not null,
-  name                      varchar(255),
-  surname                   varchar(255),
-  address                   varchar(255),
-  status                    varchar(255),
-  password                  varchar(255),
-  constraint pk_tbUser primary key (id))
+create table tbupimage (
+  imagejpg                  varchar(255) not null,
+  nameim                    varchar(255),
+  txtimage                  varchar(255),
+  pic                       varchar(255),
+  dataim                    datetime,
+  constraint pk_tbupimage primary key (imagejpg))
 ;
 
 alter table tbMovie add constraint fk_tbMovie_sweater_1 foreign key (sweater_id) references tbSweater (id) on delete restrict on update restrict;
@@ -46,7 +45,7 @@ drop table tbMovie;
 
 drop table tbSweater;
 
-drop table tbUser;
+drop table tbupimage;
 
 SET FOREIGN_KEY_CHECKS=1;
 

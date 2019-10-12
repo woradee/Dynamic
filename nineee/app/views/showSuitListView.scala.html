@@ -1,0 +1,32 @@
+@(suits: List[Suit])
+: Unit = <br>
+<h1 align="center">Suit Studio</h1>
+
+<table class="w3-table w3-striped w3-border w3-xlarge">
+    <tr>
+        <th>ProductId</th>
+        <th>Brand</th>
+        <th>Producer</th>
+        <th>Type</th>
+        <th>Color</th>
+        <th>Pattern</th>
+        <th>Texture</th>
+        <th>Price</th>
+        <th>Treatment</th>
+    </tr>
+
+    @for(suit<-suits){
+        <tr>
+            <td>@suit.getProductId</td>
+            <td>@suit.getBrand</td>
+            <td>@suit.getProducer</td>
+            <td>@suit.getType</td>
+            <td>@suit.getColor</td>
+
+            <td>@suit.getPattern</td>
+            <td>@suit.getTexture</td>
+            <td>@suit.getPrice</td>
+            <td>@suit.getTreatment</td>
+            }
+        </tr>
+</table>

@@ -1,0 +1,29 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.Login()
+GET     /Home                       controllers.Application.home()
+GET     /newmember                  controllers.Application.newmember()
+POST    /createmember                controllers.Application.createmember()
+
+GET     /Login                      controllers.Application.Login()
+POST    /chklogin                   controllers.Application.chkLogin()
+GET     /logoff                     controllers.Application.logoff()
+
+GET     /listmember                 controllers.Application.Listmember()
+GET     /editMember/:id             controllers.Application.editMember(id:String)
+POST    /updateMember               controllers.Application.updateMember()
+GET     /deleteMember/:id         controllers.Application.deleteMember(id:String)
+
+#GET     /listOrganize               controllers.Application.listOrganize()
+GET     /newOrganize                controllers.Application.newOrganize()
+POST    /createOrganize             controllers.Application.createOrganize()
+GET     /editOrganize/:id           controllers.Application.editOrganize(id:String)
+POST    /updateOrganize             controllers.Application.updateOrganize()
+GET     /deleteOrganize/:id         controllers.Application.deleteOrganize(id:String)
+GET     /listpageOr/:n              controllers.Application.showPageOrganize(n:Integer)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

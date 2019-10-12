@@ -1,0 +1,31 @@
+@(memberForm:Form[Member])
+
+@import helper._;
+
+<head>
+    <style>
+    body{
+        margin-top: 60px;
+    }
+    </style>
+</head>
+<body style="background-color: gainsboro">
+    <h1 align="center">แก้ไขข้อมูลสมาชิก</h1>
+    <h2>Edit</h2>
+    <div class="was-validated">
+        @form(action = routes.Application.updateMember(),'class->"form-control"){
+            @inputText(memberForm("id"),'_label->"Username",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+            @inputText(memberForm("password"),'_label->"Password",'size->"10",'maxlength->"7")
+            @inputText(memberForm("email"),'_label->"Email",'size->"10",'maxlength->"7")
+            <input type="submit" value="บันทึก" class="w3-button w3-green">
+            <input type="reset" value="ลบ" class="w3-button w3-red">
+        }
+
+        <div class="w3-panel w3-red">
+        @if(flash.containsKey("err")){
+            <strong>Error!</strong>
+            @flash.get("err")
+        }
+        </div>
+    </div>
+</body>

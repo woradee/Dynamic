@@ -1,0 +1,38 @@
+@(myForm:Form[Movie],sweaterList:List[Sweater])
+
+@import helper._;
+<html>
+    <head>
+
+    </head>
+
+    <body style="background-color: rgba(211, 3, 0, 0.58)">
+
+        <h1 align="center" style="font-family: AngsanaUPC">Movie Ebean</h1>
+        <h2 style="font-family: AngsanaUPC">แก้ไขข้อมูลภาพยนต์</h2>
+
+        <div class="w3-xlarge">
+            @form(action = routes.Application.updateMovie(),'class->"form-control"){
+                @inputText(myForm("id"),'_label->"รหัสภาพยนต์",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(myForm("title"),'_label->"ชื่อเรื่องภาพยนต์",'size->"50",'maxlength->"40")
+                @inputText(myForm("actor"),'_label->"นักแสดงนำฝ่ายชาย",'size->"40",'maxlength->"30")
+                @inputText(myForm("actress"),'_label->"นักแสดงนำฝ่ายหญิง",'size->"40",'maxlength->"30")
+                @inputText(myForm("Year"),'_label->"ปี",'size->"6",'maxlength->"4")
+
+                @select(myForm("sweater.id"),options=sweaterList.map(sweater=>sweater.getId->sweater.getBrand),'_label->"แบรนด์เสื้อ")
+                @select(myForm("sweater.id"),options=sweaterList.map(sweater=>sweater.getType->sweater.getType),'_label->"ประเภทเสื้อ")
+
+                <input type="submit" value="บันทึก" class="w3-button w3-green">
+                <input type="reset" value="ลบ" class="w3-button w3-red">
+            }
+
+            @if(flash.containsKey("errMessage")){
+                <div class="alert alert-danger">
+                    <strong>Error!</strong>
+                    @flash.get("errMessage")
+                </div>
+            }
+        </div>
+
+    </body>
+</html>

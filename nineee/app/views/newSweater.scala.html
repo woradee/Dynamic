@@ -1,0 +1,52 @@
+@(sweaterForm:Form[Sweater])
+
+@import helper._;
+<html>
+
+    <head>
+        <title>New Sweater Ebean</title>
+
+        <style>
+
+        body {
+            font-family: AngsanaUPC;
+            font-size: 18;
+            margin: 0;
+        }
+        </style>
+    </head>
+
+    <body style="background-color: rgba(29, 242, 255, 0.95)">
+        <h1 align="center" style="font-family: AngsanaUPC">Sweater Ebean</h1>
+
+        <h2 style="font-family: AngsanaUPC">รับข้อมูลใหม่</h2>
+
+        <div class="w3-xlarge">
+            @form(action = routes.Application.createSweater(),'class->"form-control"){
+
+                @inputText(sweaterForm("id"),'_label->"รหัสสินค้า",'size->"10",'maxlength->"7")
+                @inputText(sweaterForm("brand"),'_label->"ยี่ห้อ",'size->"30",'maxlength->"25")
+                @inputText(sweaterForm("type"),'_label->"ประเภท",'size->"30",'maxlength->"25")
+                @inputText(sweaterForm("color"),'_label->"สี",'size->"20",'maxlength->"15")
+                @inputText(sweaterForm("size"),'_label->"ขนาด",'size->"10",'maxlength->"3")
+                @inputText(sweaterForm("pattern"),'_label->"ยลวดลาย",'size->"40",'maxlength->"30")
+
+                <input type="submit" value="บันทึก" class="w3-button w3-green">
+                <input type="reset" value="ลบ" class="w3-button w3-red">
+            }
+
+
+            @if(flash.containsKey("err")){
+                <div class="w3-panel w3-red">
+                    <strong>Error!</strong>
+                    @flash.get("err")
+                </div>
+            }
+
+        </div>
+
+
+    </body>
+</html>
+
+

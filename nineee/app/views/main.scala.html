@@ -1,0 +1,133 @@
+@(content : Html)
+<!DOCTYPE html>
+<html>
+    <title>Dynamic Web Programming</title>
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+        <style>
+
+        body {
+            font-family:AngsanaUPC ;
+            margin: 0;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .subnav {
+            float: left;
+            overflow: hidden;
+        }
+
+        .subnav .subnavbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover, .subnav:hover .subnavbtn {
+            background-color: red;
+        }
+
+        .subnav-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            background-color: red;
+            width: 100%;
+            z-contact: 1;
+        }
+
+        .subnav-content a {
+            float: left;
+            color: black;
+            text-decoration: none;
+        }
+
+        .subnav-content a:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .subnav:hover .subnav-content {
+            display: block;
+        }
+
+        /*.footer {
+            background-color: red;
+            color : white;
+            padding: 10px;
+        }
+        </style>
+    </head>
+    <body >
+
+        <div class="navbar">
+
+                <!-- Brand/logo -->
+            <a class="navbar-brand" href="#">
+                    <!--<img src="camera.jpg" alt="logo" style="width:40px;"> -->
+                <img src="assets/images/LOGO1.png" style="width:91px;height:42px;">
+            </a>
+
+            <a href="/home" style="font-size: 23px">หน้าหลัก</a>
+            <a href="/about"style="font-size: 23px" >ข้อมูลส่วนตัว</a>
+            <a href="/education"style="font-size: 23px">ประวัติการศึกษา</a>
+            <a href="/interests" style="font-size: 23px">สิ่งที่สนใจ</a>
+            <a href="/goal"style="font-size: 23px">เป้าหมาย</a>
+            <a href="/travel" style="font-size: 23px">สถานที่ท่องเที่ยว</a>
+            <a href="/contact" style="font-size: 23px">ติดต่อ</a>
+            <a href="/gallery" style="font-size: 23px">ภาพถ่าย</a>
+            <a href="/product" style="font-size: 23px">PD</a>
+            <div class="subnav">
+                <button class="subnavbtn" style="font-size: 23px">ใบงาน<i class="fa fa-caret-down"></i></button>
+                <div class="subnav-content">
+                    <a href="/showSuit" style="font-size: 23px">Suit3</a>
+                    <a href="/showSuitList" style="font-size: 23px">Suit List4</a>
+                    <a href="/frmSuit" style="font-size: 23px">Dynamic Form5</a>
+                    <a href="/suit_form_helper" style="font-size: 23px">Helper Form6</a>
+                    <a href="/listSweater" style="font-size: 23px">list Sweater [Ebean]7-8</a>
+                    <a href="/listMovie" style="font-size: 23px">list Movie 9</a>
+                </div>
+            </div>
+
+        </div>
+        <br><br>
+
+
+        <div class="container-fluid">
+
+            <div class="row">
+                @content
+            </div>
+        </div>
+
+        <!--<br>
+       <div class="footer">
+            <h6 align="center" >Thank you for visiting our website.</h6>
+        </div>-->
+
+    </body>
+</html>

@@ -1,0 +1,30 @@
+@(sweaterList:List[Sweater])
+
+<h1 align="center">List Sweater Ebean</h1>
+    <table class ="w3-table w3-striped w3-border w3-xlarge">
+        <tr>
+            <th>รหัสสินค้า</th>
+            <th>ยี่ห้อ</th>
+            <th>ประเภท</th>
+            <th>สี</th>
+            <th>ขนาด</th>
+            <th>ลวดลาย</th>
+            <th><a href= "/newSweater" class="w3-button w3-blue">เพิ่มข้อมูล</a></th>
+        </tr>
+        @for(sweater<-sweaterList){
+            <tr>
+                <td>@sweater.getId</td>
+                <td>@sweater.getBrand</td>
+                <td>@sweater.getType</td>
+                <td>@sweater.getColor</td>
+                <td>@sweater.getSize</td>
+                <td>@sweater.getPattern</td>
+
+                <td>
+                    <a href="/editSweater/@sweater.getId" class="w3-button w3-pale-green">แก้ไข</a>
+                    <a href="/deleteSweater/@sweater.getId" class="w3-button w3-pale-red" onclick="return confirm('โปรดยืนยันการลบข้อมูลที่เลือก?')">ลบ</a>
+
+                </td>
+            </tr>
+        }
+    </table>

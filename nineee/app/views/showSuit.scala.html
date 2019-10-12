@@ -1,0 +1,59 @@
+@(one_button:Suit)
+<head >
+    <style>
+
+    <style>
+    body {
+        font-family: AngsanaUPC;
+        margin: 0;
+    }
+    </style>
+
+    <h1 align="center">Suit</h1>
+    <table class="w3-table w3-striped w3-border w3-xlarge" >
+        <tr>
+            <td>Product Id :</td>
+            <td>@one_button.getProductId</td>
+        </tr>
+
+        <tr>
+            <td>Brand :</td>
+            <td>@one_button.getBrand()</td>
+        </tr>
+        <tr>
+            <td>Producer :</td>
+            <td>@one_button.getProducer()</td>
+        </tr>
+        <tr>
+            <td>Type :</td>
+            <td>@one_button.getType()</td>
+        </tr>
+        <tr>
+            <td>Color :</td>
+            <td>@one_button.getColor()</td>
+        </tr>
+
+
+
+        <tr>
+            <td>Pattern :</td>
+            <td>@one_button.getPattern</td>
+        </tr>
+        <tr>
+            <td>Texture :</td>
+            <td>@one_button.getTexture</td>
+        </tr>
+
+        <tr>
+            <td>Price :</td>
+            <td>@one_button.getPrice()</td>
+        </tr>
+
+
+        <tr>
+            <td>Treatment :</td>
+            <td>@one_button.getTreatment</td>
+        </tr>
+
+
+    </table>
