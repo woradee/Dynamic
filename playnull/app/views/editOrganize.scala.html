@@ -1,0 +1,70 @@
+@(t:Form[Organizes])
+@import helper._;
+
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>ข้อมูลหน่วยงาน</title>
+        <h1>แก้ไขข้อมูลหน่วยงาน</h1>
+        <link rel="stylesheet" href="/assets/stylesheets/css/bootstrap.css">
+
+        <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #f44336;
+        }
+
+        .button2:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+
+        </style>
+    </head>
+
+    <body style="font-family: AngsanaUPC" >
+    <div class="w3-xlarge">
+        @form(action = routes.Application.updateOrganize()){
+            @inputText(t("oid"),'_label->"รหัส",'size->"10",'maxlength->"10",'readOnly->"readOnly")
+            @inputText(t("name"),'_label->"ชื่อหน่วยงาน",'size->"10",'maxlength->"7")
+            @inputText(t("tel"),'_label->"เบอร์โทรติดต่อ",'size->"10",'maxlength->"10")
+            @textarea(t("address"),'_label->"ที่อยู่",'col -> "10",'row -> "5")
+            @inputText(t("email"),'_label->"E-mail",'size->"10",'maxlength->"50")
+            @textarea(t("detail"),'_label->"รายละเอียด",'col -> "10",'row -> "5")
+
+            <input type="submit" value="บันทึก" class="w3-button w3-green">
+        }
+    </div>
+
+    </body>
+
+
+
+</html>

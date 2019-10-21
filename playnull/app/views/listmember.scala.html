@@ -1,0 +1,38 @@
+@(memberList:List[Member])
+<head>
+    <style>
+    body{
+        margin-top: 60px;
+    }
+    </style>
+</head>
+
+<body style="background-color: gainsboro">
+    <h1>List Member</h1>
+    <table class="table table-dark">
+        <tr>
+            <th>ID</th>
+            <th>PASSWORD</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Gender</th>
+            <th>EMAIL</th>
+            <th>Status</th>
+        </tr>
+        @for(member<-memberList){
+            <tr>
+                <td>@member.getId</td>
+                <td>@member.getPassword</td>
+                <td>@member.getName</td>
+                <td>@member.getSurname</td>
+                <td>@member.getGender</td>
+                <td>@member.getEmail</td>
+                <td>@member.getStatus</td>
+                <td>
+                    <a href="/editMember/@member.getId" class="w3-button w3-pale-green">แก้ไข</a>
+                    <a href="/deleteMember/@member.getId" class="w3-button w3-pale-red" onclick="return confirm('โปรดยืนยันการลบข้อมูลที่เลือก?')">ลบ</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>

@@ -1,0 +1,84 @@
+@(t:Form[T])
+
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <title>Travel in Khonkaen</title>
+    <head>
+
+
+        <style>
+        body {
+            font-family:AngsanaUPC ;
+            font-size: x-large;
+        }
+        </style>
+    </head>
+
+    <body >
+        <br>
+        <h1 style="font-family: AngsanaUPC" align="center">เพิ่มข้อมูล</h1>
+        <form action="/createTour " method="post">
+            <div class="w3-container ">
+                <table class="w3-table w3-xlarge">
+                    <tr>
+                        <th class="w3-right" >รหัสสถานที่</th>
+                        <td><input type="text" name="tid" size="10"></td>
+
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ชื่อสถานที่</th>
+                        <td><input type="text" name="name" size="40"></td>
+
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ลักษณะ</th>
+                        <td><input type="text" name="type"></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ขนาดพื้นที่</th>
+                        <td><input type="text" name="size"></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ที่ตั้ง</th>
+                        <td><input type="text" name="location"></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ประวัติ</th>
+                        <td><textarea name="history" cols="65" rows="5"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">เวลาทำการ</th>
+                        <td><input type="text" name="time"></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">เบอร์โทรศัพท์</th>
+                        <td><input type="text" name="tel" pattern="[0-9]{1,}"></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">อีเมลล์</th>
+                        <td><input type="text" name="mail"></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ปีที่จัดตั้ง</th>
+                        <td><input type="text" name="year" pattern="[0-9]{1,}"></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">หน่วยงานที่เกี่ยวข้อง</th>
+                        <td><input type="text" name="organize"></td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div class="w3-center">
+                <input type="submit" value="บันทึก" class=" w3-button w3-green " >
+                <input type="reset" value="ลบ" class=" w3-button w3-red">
+            </div>
+
+        </form>
+
+
+    </body>
+</html>

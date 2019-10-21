@@ -1,0 +1,45 @@
+@(t:Form[T])
+@import helper._;
+
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>Travel in Khonkaen</title>
+        <br>
+        <h1 class="w3-x-large w3-center" style="font-family: AngsanaUPC" >แก้ไขข้อมูล</h1>
+        <link rel="stylesheet" href="/assets/stylesheets/css/bootstrap.css">
+
+        <style>
+        body {
+            font-family:AngsanaUPC ;
+            font-size: x-large;
+        }
+        </style>
+    </head>
+
+    <body style="font-family: AngsanaUPC" >
+        <div class="w3-xlarge ">
+            @form(action = routes.Application.updateTour()){
+                @inputText(t("tid"),'_label->"รหัสสถานที่",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(t("name"),'_label->"ชื่อสถานที่",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(t("type"),'_label->"ลักษณะ",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(t("size"),'_label->"ขนาดพื้นที่",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(t("location"),'_label->"ที่ตั้ง",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @textarea(t("history"),'_label->"ประวัติ",'col -> "10",'row -> "5",'readOnly->"readOnly")
+                @inputText(t("time"),'_label->"เวลาทำการ",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(t("tel"),'_label->"เบอร์โทรศัพท์",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(t("mail"),'_label->"อีเมลล์",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(t("year"),'_label->"ปีที่จัดตั้ง",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+                @inputText(t("organize"),'_label->"หน่วยงานที่เกี่ยวข้อง",'size->"10",'maxlength->"7",'readOnly->"readOnly")
+
+                <div class="w3-center">
+                    <input type="submit" value="บันทึก" class="button button1 w3-green">
+                </div>
+
+            }
+        </div>
+
+    </body>
+
+
+
+</html>

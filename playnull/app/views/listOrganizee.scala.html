@@ -1,0 +1,57 @@
+@(pageOrganize:com.avaje.ebean.Page[Organizes])
+@import java.math.BigInteger; var i=0;
+<h1>รวมข้อมูลรายชื่อหน่วยงาน</h1>
+<link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+<div class="container">
+<table class="table table-stripe">
+    <tr>
+        <th>รหัสหน่วยงาน</th>
+        <th>ชื่อ</th>
+        <th>เบอร์โทรศัพท์</th>
+        <th>E-mail</th>
+        <th>รายละเอียด</th>
+        <th><a href="/newOrganize" class="btn-info">เพิ่มรายชื่อบริษัทใหม่</a> </th>
+    </tr>
+
+    @for(organize<-pageOrganize.getList()){
+        <tr>
+            <td>@organize.getOid</td>
+            <td>@organize.getName</td>
+            <td>@organize.getTel</td>
+            <td>@organize.getEmail</td>
+            <td>@organize.getDetail</td>
+            <td>
+                <a href="/editOrganize/@organize.getOid" class="btn-info">แก้ไข</a>
+                <a href="/deleteOrganize/@organize.getOid" class="btn-danger" onclick="return confirm('ลบหรือไม่ ?')">ลบ</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+    <p align="center">
+        <i class="text-success">
+            รายการข้อมูลที่ @pageOrganize.getDisplayXtoYofZ(" - "," จากทั้งหมด ")รายการ
+        </i>
+        <br>
+        @if(pageOrganize.hasPrev){
+            <a href="/listpageOr/@(pageOrganize.getPageIndex-1)" class="btn btn-info"> Previous </a>
+        }else{
+            <a class="btn btn-info disabled"> Prevuous </a>
+        }
+
+        @for(i <- 1 to pageOrganize.getTotalPageCount) {
+            @if(i==pageOrganize.getPageIndex+1){
+                <a href="/listpageOr/@i" class="btn btn-info disabled">@i</a>
+            }else{
+                <a href="/listpageOr/@i" class="btn btn-info">@i</a>
+            }
+        }
+
+        @if(pageOrganize.hasNext) {
+            <a href="/listpageOr/@(pageOrganize.getPageIndex+1)" class="btn btn-info"> Next </a>
+        } else {
+            <a class="btn btn-info disabled"> Next </a>
+        }
+    </p>
+</div>
