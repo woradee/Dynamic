@@ -1,0 +1,126 @@
+@(t:Form[Tourist],o:List[Organizes])
+
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <br><br>
+    <title>Travel in Khonkaen</title>
+    <head>
+
+
+
+        <h1 style="font-family: AngsanaUPC"  align="center">เพิ่มสถานที่ท่องเที่ยว</h1>
+
+        <style>
+        body {
+            font-family:AngsanaUPC ;
+            font-size: x-large;
+            background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url("/assets/images/12.jpg");
+            height: 100vh;
+            background-size:cover ;
+            background-position: center;
+        }
+
+        </style>
+    </head>
+    @if(flash.containsKey("errMessage")){
+        <div class="w3-panel w3-red w3-round-xxlarge">
+            <strong>ผิดพลาด!</strong> @flash.get("errMessage")
+        </div>
+
+
+    }
+
+    <body>
+
+        <form action="/createTourist" method="post">
+            <div class="w3-container ">
+                <table class="w3-table w3-xlarge">
+                    <tr>
+                        <th class="w3-right" >รหัสสถานที่</th>
+                        <td><input type="text" name="tid" required></td>
+
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ชื่อสถานที่</th>
+                        <td><input type="text" name="name" required></td>
+
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ลักษณะ</th>
+                        <td><input type="text" name="type" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">รายละเอียด</th>
+                            <!--<td><input type="text" name="detail"></td>-->
+                        <td><textarea name="detail" cols="65" rows="5" maxlength="255" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ขนาดพื้นที่</th>
+                        <td><input type="text" name="size" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ที่ตั้ง</th>
+                        <td><input type="text" name="locate" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ประวัติความเป็นมา</th>
+                        <td><textarea name="history" cols="65" rows="5" maxlength="255" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">เวลาทำการ</th>
+                        <td><input type="text" name="timeopen" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">เบอร์โทรศัพท์</th>
+                        <td><input type="text" name="tel" pattern="[0-9]{1,}" maxlength="10" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">อีเมลล์</th>
+                        <td><input type="text" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ค่าบริการ(คนไทย)</th>
+                        <td><input type="text" name="servicethai" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ค่าบริการ(ชาวต่างชาติ)</th>
+                        <td><input type="text" name="serviceeng" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ปีที่จัดตั้ง</th>
+                        <td><input type="text" name="yearopen" pattern="[0-9]{1,}" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">หน่วยงานที่เกี่ยวข้อง</th>
+                        <td><select name="organize.oid">
+                            @for(i <- o){
+                                <option value="@i.getOid()" selected>@i.getName</option>
+                            }
+                        </select></td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div class="w3-center">
+                <input type="submit" value="บันทึก" class="w3-button w3-green w3-xlarge " >
+                <input type="reset" value="ลบ" class=" w3-button w3-red w3-xlarge">
+            </div>
+
+        </form>
+
+        <script type='text/javascript'>
+                function preview_image(event){
+                    var reader = new FileReader();
+                    reader.onload = function()
+                    {
+                        var output = document.getElementById('preview');
+                        output.src = reader.result;
+                    }
+                    reader.readAsDataURL(event.target.files[0]);
+                }
+        </script>
+    </body>
+</html>

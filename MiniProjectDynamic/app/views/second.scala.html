@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<title>Travel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url('assets/images/mou.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+  background-image: url('assets/images/bird.jpg');
+  min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+  background-image: url('assets/images/family.jpg');
+  min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+ {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top w3-white">
+  <div class="w3-bar " id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-teal" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="/" class="w3-bar-item w3-button">หน้าแรก</a>
+
+    @if(session.get("userId")=="admin"){
+      <a href="/listpageMember/1 " class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ข้อมูลสมาชิก</a>
+      <a href="/listpageOr/1" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> ข้อมูลหน่วยงาน</a>
+      <a href="/listTourist" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> ข้อมูลสถานที่ท่องเที่ยว</a>
+      <a href="/listPicture" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> เพิ่มรูปภาพ</a>
+
+
+    }
+
+    @if(session.get("userId") == null){
+      <a href="/login" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-blue">
+        <i class="w3-large fa fa-user">เข้าสู่ระบบ</i>
+      </a>
+    }else{
+      <div class="w3-dropdown-hover w3-hide-small w3-right">
+        <button class="w3-padding-large w3-button" title="More"> <i class='fas fa-circle' style='font-size:10px;color:green'></i>&nbsp;&nbsp;Username: @session.get("userId") <i class="fa fa-caret-down"></i></button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <a href="/profile" class="w3-bar-item w3-button">Profile</a>
+          <a href="/logoff" class="w3-bar-item w3-button">Log out</a>
+        </div>
+      </div>
+    }
+
+
+
+
+
+
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium ">
+    <a href="/home" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> หน้าหลัก</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">ข้อมูลสมาชิก</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">หน่วยงาน</a>
+    <a href="/listTour" class="w3-bar-item w3-button" onclick="toggleFunction()">Tour</a>
+    <a href="/login" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-blue">
+      <i class="w3-large fa fa-user">เข้าสู่ระบบ</i>
+    </a>
+  </div>
+</div>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" >
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity w3-xxlarge">Natural <span class="w3-hide-small">in</span> Khonkaen</span>
+      <br>
+
+      <center><a href="/listTourist2"><button class="w3-button w3-padding-large w3-white w3-large " style="margin-top:64px "><h style="font-family:AngsanaUPC"></h>สถานที่ท่องเที่ยว</button></a></center>
+
+  </div>
+
+</div>
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" >
+  <h3 class="w3-center">ABOUT ME</h3>
+  <p class="w3-center"><em>I love photography</em></p>
+  <p style="font-family: Kanit; font-size: 16px"> เมืองขอนแก่นนั้นได้มีตำนานแต่โบราณเล่าขานสืบต่อกันมาว่า ก่อนที่เพี้ยเมืองแพนจะอพยพไพร่พลมาตั้งบ้านตั้งเมืองขึ้นนั้น ปรากฏว่าบ้านขาม หรือตำบลบ้านขาม อำเภอน้ำพองปัจจุบัน
+    ซึ่งเป็นเขตแขวงร่วมการปกครองกับบ้านชีโล้น มีตอมะขามขนาดใหญ่ที่ตายไปหลายปีแล้ว กลับมีใบงอกงามเกิดขึ้นใหม่อีก และหากผู้ใดไปกระทำมิดีมิร้ายหรือดูถูกดูหมิ่น ไม่ให้ความเคารพยำเกรง ก็จะมีอันเป็นไปในทันทีทันใด เป็นที่น่าประหลาดและมหัศจรรย์ยิ่งนัก</p>
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i>History Of Khonkaen</b></p><br>
+      <img src="assets/images/KhonKaen.png" class="w3-round w3-image " alt="Photo of Me" width="500" height="333">
+    </div>
+
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p style="font-family: Kanit; font-size: 18px">ดังนั้น บรรดาชาวบ้านชาวเมืองในแถบถิ่นนั้นจึงได้พร้อมใจกันก่อเจดีย์ครอบตอมะขามนั้นเอาไว้เสีย เพื่อให้เป็นที่สักการะของคนทั่วไป พร้อมกับได้บรรจุพระธรรมคำสอนของพระพุทธเจ้า 9 บทเข้าไว้ในเจดีย์ครอบตอมะขามนั้นด้วย ซึ่งเรียกว่า พระเจ้า 9 พระองค์
+        แต่เจดีย์ที่สร้างในครั้งแรกเป็นรูปปรางค์ หลังจากได้ทำการบูรณะใหม่เมื่อราว 50 ปีที่ผ่านมานี้จึงได้เปลี่ยนเป็นรูปทรงเจดีย์ และมีนามว่า พระธาตุขามแก่น ปัจจุบันตั้งอยู่ในเขตวัดเจติยภูมิ บ้านขาม ตำบลบ้านขาม อำเภอน้ำพอง จังหวัดขอนแก่น
+        พระเจดีย์ขามแก่นถือว่าเป็นปูชนียสถานอันศักดิ์สิทธิ์ของชาวจังหวัดขอนแก่น ซึ่งจะมีงานพิธีบวงสรวง เคารพสักการะกันในวันเพ็ญเดือน 6 ทุกปี</p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- Third Parallax Image with Portfolio Text -->
+<div class="bgimg-3 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">Our My Team</span>
+  </div>
+</div>
+
+    <!-- Container (TEAM Section) -->
+  <div class="w3-content w3-container w3-padding-64" >
+    <h3 class="w3-center">Our My Team</h3>
+    <br>
+
+      <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+    <div class="w3-row-padding w3-center">
+      <div class="w3-col m3">
+        <img src="assets/images/plugg.jpg" style="width:100%"  class="w3-hover-opacity" onclick="onClick(this)">
+        <p style="font-family: Kanit; font-size: 18px">ธนวัฒน์ เกิดศิลป์</p>
+      </div>
+
+      <div class="w3-col m3">
+        <img src="assets/images/yok.png" style="width:100%"  class="w3-hover-opacity" onclick="onClick(this)" >
+        <p style="font-family: Kanit; font-size: 18px">กรกนก สุภารัตน์</p>
+      </div>
+
+      <div class="w3-col m3">
+        <img src="assets/images/toey.png" style="width:100%"  class="w3-hover-opacity" onclick="onClick(this)">
+        <p style="font-family: Kanit; font-size: 18px">กิตติกวินขัน อาษา</p>
+      </div>
+
+      <div class="w3-col m3">
+        <img src="assets/images/joy.jpg" style="width:55%"  class="w3-hover-opacity" onclick="onClick(this)">
+        <p  style="font-family: Kanit; font-size: 18px">วรดี จงแพทย์</p>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+    <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption" class="w3-opacity w3-large"></p>
+    </div>
+  </div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  @*<a href="/home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>*@
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<p>Powered by หามกันไป</p>
+</footer>
+
+<script>
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>

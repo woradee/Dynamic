@@ -1,0 +1,60 @@
+@(memberForm:Form[Member])
+
+@import helper._;
+<link rel="stylesheet" href="/assets/stylesheets/editM.css">
+<header>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขข้อมูลสมาชิก</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+</header>
+
+<script type='text/javascript'>
+        function preview_image(event){
+            var reader = new FileReader();
+            reader.onload = function()
+            {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</script>
+@if(flash.containsKey("msgError")){
+    <div class="w3-panel w3-red w3-round-xxlarge">
+        <strong>ผิดพลาด!</strong> @flash.get("msgError")
+    </div>
+
+}
+<style>
+body {
+    font-family:AngsanaUPC ;
+    font-size: x-large;
+}
+</style>
+<body style="background: #4e555b "  >
+
+    <div style="font-size: xx-large">
+        @form(action = routes.Application.updateMember(),'class ->"from-control", 'enctype->"multipart/form-data"){
+            <br>
+            <h1 style="font-family: AngsanaUPC">แก้ไขข้อมูลสมาชิก</h1>
+            <fieldset style="font-family: AngsanaUPC">
+                <div class="container" align="left" style="font-size: xx-large">
+                    @inputText(memberForm("id"),'_label->"Username",'size->"10",'maxlength->"255",'readOnly->"readOnly",'required->"required")
+                    @inputText(memberForm("password"),'_label->"Password",'size->"10",'maxlength->"255",'required->"required")
+                    @inputText(memberForm("name"),'_label->"Name",'size->"25",'maxlength->"255",'required->"required")
+                    @inputText(memberForm("surname"),'_label->"Surname",'size->"25",'maxlength->"255",'required->"required")
+                    @inputText(memberForm("email"),'_label->"Email",'size->"25",'maxlength->"255",'required->"required")
+                    @inputRadioGroup(memberForm("gender"),options=Seq("male" -> "ชาย","female"->"หญิง"))
+            </fieldset>
+
+
+
+            <button type="submit" value="บันทึก" style="font-size: xx-large">Submit</button>
+
+        }<br>
+    </div>
+
+</body>

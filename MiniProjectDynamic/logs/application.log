@@ -1,0 +1,9 @@
+2019-10-26 21:10:37,446 - [INFO] - from play in pool-4-thread-5 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2019-10-26 21:10:58,755 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:mysql://localhost/db_play
+
+2019-10-26 21:10:59,315 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+

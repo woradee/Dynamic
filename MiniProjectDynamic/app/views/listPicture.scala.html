@@ -1,0 +1,60 @@
+@(picsList : List[Pics])
+<link rel="stylesheet" href="/assets/stylesheets/tabel.css">
+
+<head>
+    <style>
+    body{
+        font-size: x-large;
+        font-family: AngsanaUPC;
+    }
+    </style>
+</head>
+
+<script type='text/javascript'>
+        function preview_image(event){
+            var reader = new FileReader();
+            reader.onload = function()
+            {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</script>
+
+<body>
+    <br><br>
+
+    <h1 align="center" style="font-family: AngsanaUPC">ข้อมูลรูปภาพ</h1>
+    <table class= "w3-table	w3-border w3-xlarge" >
+        <thead>
+            <tr class="w3-teal">
+                <th class= " w3-center">  รหัสภาพ </th>
+                <th class= " w3-center">  ชื่อภาพ </th>
+                <th class= " w3-center">  รายละเอียด </th>
+                <th class= " w3-center">  วัน/เดือน/ปี </th>
+                <th class= " w3-center">  เป็นรูปของสถานที่ชื่อ </th>
+                <th class= " w3-center">  รูปภาพ</th>
+
+                <th><a href="/newPicture" class="w3-button w3-blue w3-center w3-green">เพิ่มข้อมูล</a> </th>
+
+            </tr>
+        </thead>
+
+            @for(image <- picsList ){
+                <tr style="font-family: AngsanaUPC" class="w3-pale-green">
+                    <td>@image.getImagejpg</td>
+                    <td>@image.getNameimage</td>
+                    <td>@image.getTxtimage</td>
+                    <td>@image.getDataimage</td>
+                    <td>@image.getTourist.getName</td>
+                    <td><img src="/assets/images/uploads/@image.getPicture" style="width:120px;height: 120px"> </td>
+
+                    <td>
+                        <a href="/deletePicture/@image.getImagejpg" class="w3-button w3-center w3-deep-orange w3-center" onclick="return confirm('โปรดยืนยันการลบข้อมูล???')">ลบ</a>
+                    </td>
+                </tr>
+            }
+
+    </table>
+</body>

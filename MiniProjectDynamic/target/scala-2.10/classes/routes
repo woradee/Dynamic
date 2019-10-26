@@ -1,0 +1,52 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.first()
+GET     /Home                       controllers.Application.second()
+GET     /about                      controllers.Application.second()
+
+GET     /login                      controllers.Application.Login()
+POST    /chklogin                   controllers.Application.chkLogin()
+GET     /loginsuccess               controllers.Application.loginSuccess()
+GET     /logoff                     controllers.Application.logoff()
+
+GET     /profile                    controllers.Application.profile()
+GET     /editProfile/:id            controllers.Application.editProfile(id:String)
+POST    /updateProfile              controllers.Application.updateProfile()
+
+GET     /newmember                  controllers.Application.newmember()
+POST    /createmember                 controllers.Application.createmember()
+
+
+GET     /listpageMember/:n          controllers.Application.showPageMember(n:Integer)
+GET     /editMember/:id             controllers.Application.editMember(id:String)
+POST    /updateMember               controllers.Application.updateMember()
+GET     /deleteMember/:id         controllers.Application.deleteMember(id:String)
+
+GET     /listpageOr/:n              controllers.Application.showPageOrganize(n:Integer)
+GET     /newOrganize                controllers.Application.newOrganize()
+POST    /createOrganize             controllers.Application.createOrganize()
+GET     /editOrganize/:id           controllers.Application.editOrganize(id:String)
+POST    /updateOrganize             controllers.Application.updateOrganize()
+GET     /deleteOrganize/:id         controllers.Application.deleteOrganize(id:String)
+
+GET     /listTourist                  controllers.Application.listTourist()
+GET     /newTourist                    controllers.Application.newTourist()
+POST    /createTourist                 controllers.Application.createTourist()
+GET     /editTourist/:id               controllers.Application.editTourist(id:String)
+POST    /updateTourist                 controllers.Application.updateTourist()
+GET     /deleteTourist/:id             controllers.Application.deleteTourist(id:String)
+
+GET     /listTourist2                  controllers.Application.listTourist2()
+
+GET     /gellery                    controllers.Application.gellery()
+
+GET     /listPicture                    controllers.Application.listPicture()
+GET     /newPicture                    controllers.Application.newPicture()
+POST    /createPicture                  controllers.Application.createPicture()
+GET     /deletePicture/:id             controllers.Application.deletePicture(id:String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

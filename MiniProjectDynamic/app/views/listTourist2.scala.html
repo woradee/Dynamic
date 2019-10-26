@@ -1,0 +1,48 @@
+@(pictureList:List[Pics])
+<html>
+    <br>
+    <h1 align="center">อุทยาน</h1>
+    <link rel="stylesheet" href="/assets/stylesheets/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+    <style>
+    body{
+        background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url("/assets/images/bgg.jfif");
+        height: 100vh;
+        background-size:cover ;
+        background-position: center;
+
+
+    }
+    </style>
+    <body>
+
+        @for(image<-pictureList){
+            <div class="w3-row">
+            <div class="w3-col m6 w3-center w3-padding-large">
+                <p><b><i class="fa fa-user w3-margin-right"></i>@image.getTourist.getName</b></p><br>
+                <img src="assets/images/uploads/@image.getPicture" class="w3-round w3-image " alt="Photo of Me" width="500" height="333">
+            </div>
+                <div class="w3-col m6 w3-hide-small w3-padding-large">
+                    <p class="w3-xlarge" style="font-family: Kanit; font-size: 18px">&emsp;&emsp;@image.getTourist.getDetail</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>ลักษณะ: </b> @image.getTourist.getType</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>ขนาดพื้นที่ประมาณ: </b> @image.getTourist.getSize</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>ตั้งอยู่ที่จังหวัด: </b> @image.getTourist.getLocate</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>เบอร์โทรศัพท์: </b> @image.getTourist.getTel</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>E-mail: </b> @image.getTourist.getEmail</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>ค่าบริการคนไทย: </b> @image.getTourist.getServicethai บาท</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>ค่าบริการชาวต่างชาติ: </b> @image.getTourist.getServiceeng บาท</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>ปีที่จัดตั้ง: </b> @image.getTourist.getYearopen</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>เวลาทำการ: </b> @image.getTourist.getTimeopen</p>
+                    <p style="font-family: Kanit; font-size: 18px"><b>&emsp;&emsp;&emsp;&emsp;&emsp;ประวัติความเป็นมา&emsp; </b> @image.getTourist.getHistory</p>
+                </div>
+            </div>
+
+
+
+            <h1 align="center">_________________________________________________________________________________________________________</h1>
+        }
+
+
+    </body>
+
+</html>

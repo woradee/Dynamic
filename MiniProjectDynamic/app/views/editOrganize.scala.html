@@ -1,0 +1,54 @@
+@(t:Form[Organizes])
+
+@import helper._;
+<link rel="stylesheet" href="/assets/stylesheets/editM.css">
+<header>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขข้อมูลหน่วยงาน</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+</header>
+
+<script type='text/javascript'>
+        function preview_image(event){
+            var reader = new FileReader();
+            reader.onload = function()
+            {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</script>
+@if(flash.containsKey("msgError")){
+    <div class="w3-panel w3-red w3-round-xxlarge">
+        <strong>ผิดพลาด!</strong> @flash.get("msgError")
+    </div>
+}
+
+<body style="background: #4e555b">
+    @form(action = routes.Application.updateOrganize(),'class ->"from-control", 'enctype->"multipart/form-data"){
+
+        <br>
+        <h1 style="font-family: AngsanaUPC">แก้ไขข้อมูลหน่วยงาน</h1>
+        <fieldset style="font-family: AngsanaUPC">
+            <div class="container xx-large" align="left">
+
+                @inputText(t("oid"),'_label->"รหัส",'size->"10",'maxlength->"255",'readOnly->"readOnly")
+                @inputText(t("name"),'_label->"ชื่อหน่วยงาน",'size->"10",'maxlength->"255",'required->"required")
+                @inputText(t("tel"),'_label->"เบอร์โทรติดต่อ",'size->"10",'maxlength->"10",'required->"required")
+                @textarea(t("address"),'_label->"ที่อยู่",'col -> "10",'row -> "5",'required->"required")
+                @inputText(t("email"),'_label->"E-mail",'size->"10",'maxlength->"255",'required->"required")
+                @textarea(t("detail"),'_label->"รายละเอียด",'col -> "10",'row -> "5",'maxlength->"255",'required->"required")
+        </fieldset>
+
+        <button type="submit" value="บันทึก">Submit</button>
+
+    }<br>
+</body>
+
+
+
+

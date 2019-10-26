@@ -1,0 +1,14 @@
+
+<link rel="stylesheet" href="/assets/stylesheets/profile.css">
+<div class="container">
+    <div class="avatar-flip">
+        <td><img src="/assets/images/3.jpg" style="width:150px;height: 150px"></td>
+        <td><img src="/assets/images/3.jpg" style="width:150px;height: 150px"></td>
+    </div>
+    <a href="/editProfile/@session.get("userId")" class="w3-bar-item w3-button w3-blue "><i class='fas fa-edit fa fa-user' style='font-size:15px;color:black'></i>&nbsp;&nbsp;Edit Profile</a>
+
+    <p style="font-size: xx-large" >Name: @session.get("name")</p>
+    <p style="font-size: xx-large">Gender: @session.get("gender")</p>
+    <p style="font-size: xx-large">Status: @session.get("status")</p>
+    <h4 style="font-size: x-large">Thank you for visiting Welcome to the Web</h4>
+</div>

@@ -51,8 +51,4 @@ public class Suit extends Costume{
         this.productId = productId;
     }
 
-
-
-
-
 }

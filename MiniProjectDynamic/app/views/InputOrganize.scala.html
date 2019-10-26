@@ -1,0 +1,72 @@
+@(t:Form[Organizes])
+
+<html xmlns="http://www.w3.org/1999/html">
+    <title>Travel in Khonkaen</title>
+    <head>
+        <br><br>
+        <h1 style="font-family: AngsanaUPC"  align="center">เพิ่มข้อมูลหน่วยงาน</h1><br>
+        <link rel="stylesheet" href="/assets/stylesheets/css/bootstrap.css">
+
+        <style>
+        body{
+            background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url("/assets/images/12.jpg");
+            height: 100vh;
+            background-size:cover ;
+            background-position: center;
+        }
+        </style>
+    </head>
+    @if(flash.containsKey("err")){
+        <div class="w3-panel w3-red w3-round-xxlarge">
+            <strong>ผิดพลาด!</strong> @flash.get("err")
+        </div>
+
+    }
+    <body style="font-family: AngsanaUPC" >
+
+        <form action="/createOrganize " method="post">
+
+            <div class="w3-container ">
+                <table class="w3-table w3-xlarge">
+                    <tr>
+                        <th class="w3-right" >รหัสหน่วยงาน</th>
+                        <td><input type="text" name="oid" required></td>
+
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ชื่อหน่วยงาน</th>
+                        <td><input type="text" name="name" required></td>
+
+                    </tr>
+                    <tr>
+                        <th class="w3-right">เบอร์โทรศัพท์</th>
+                        <td><input type="text" name="tel" pattern="[0-9]{1,}" maxlength="10" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ที่อยู่</th>
+                        <td><textarea name="address" cols="65" rows="5"  maxlength="255" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">อีเมลล์</th>
+                        <td><input type="text" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">ที่ตั้ง</th>
+                        <td><input type="text" name="locate" required></td>
+                    </tr>
+                    <tr>
+                        <th class="w3-right">รายละเอียด</th>
+                        <td><textarea name="detail" cols="65" rows="5" maxlength="255" required></textarea></td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="w3-center">
+                <input type="submit" value="บันทึก" class="w3-button w3-green w3-xlarge " >
+                <input type="reset" value="ลบ" class=" w3-button w3-red w3-xlarge">
+            </div>
+        </form>
+    </body>
+</html>

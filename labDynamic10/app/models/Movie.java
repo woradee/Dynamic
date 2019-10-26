@@ -86,6 +86,7 @@ public class Movie extends Model{
     public static List<Movie>list(){
         return  finder.all();
     }
+
     public  static  void  create(Movie movie){
         movie.save();
     }

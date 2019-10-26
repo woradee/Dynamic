@@ -1,0 +1,106 @@
+@(touristList:List[Tourist])
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+    <style>
+    body{
+        font-size: x-large;
+    }
+    </style>
+
+    <div class="6" align="center">
+        @if(flash.containsKey("status")){
+            <div class="alert alert-success">
+                <div class="alert-heading">
+                    <h2>@flash.get("status")</h2>
+                </div>
+            </div>
+        }
+    </div>
+</head>
+
+
+<body style="font-family: AngsanaUPC">
+
+    <br>
+    <h1 align="center"style="font-family: AngsanaUPC">List Tourist</h1> <br>
+    <th>&ensp;&ensp;&ensp;<a href="/newTourist" class="w3-button w3-blue">เพิ่มข้อมูล</a> </th> <br><br>
+    <table class="w3-table w3-border w3-xlarge"style="font-family: AngsanaUPC">
+    @for(tourist<-touristList){
+        <tr>
+            <th>รหัสสถานที่ท่องเที่ยว</th>
+            <td>@tourist.getTid</td>
+        </tr>
+        <tr>
+            <th>ชื่อ</th>
+            <td>@tourist.getName</td>
+        </tr>
+        <tr>
+            <th>ลักษณะ</th>
+            <td>@tourist.getType</td>
+        </tr>
+        <tr>
+            <th>ขนาดพื้นที่</th>
+            <td>@tourist.getSize</td>
+        </tr>
+        <tr>
+            <th>สถานที่ตั้ง</th>
+            <td>@tourist.getLocate</td>
+        </tr>
+        <tr>
+            <th>ประวัติความเป็นมา</th>
+            <td>@tourist.getHistory</td>
+        </tr>
+        <tr>
+            <th>เวลาทำการ</th>
+            <td>@tourist.getTimeopen</td>
+        </tr>
+        <tr>
+            <th>เบอร์โทรศัพท์</th>
+            <td>@tourist.getTel</td>
+        </tr>
+        <tr>
+            <th>อีเมลล์</th>
+            <td>@tourist.getEmail</td>
+        </tr>
+        <tr>
+            <th>ค่าบริการ(คนไทย)</th>
+            <td>@tourist.getServicethai</td>
+
+        </tr>
+        <tr>
+            <th>ค่าบริการ(ชาวต่างชาติ)</th>
+            <td>@tourist.getServiceeng</td>
+
+        </tr>
+        <tr>
+            <th>ปีที่จัดตั้ง</th>
+            <td>@tourist.getYearopen</td>
+        </tr>
+        <tr>
+            <th>หน่วยงานที่รับผิดชอบ</th>
+            <td>@tourist.getOrganize.getName</td>
+
+        </tr>
+        <tr>
+            <th>รายละเอียด</th>
+            <td>@tourist.getDetail</td>
+        </tr>
+        <tr>
+
+            <td>
+                <a href="/editTourist/@tourist.getTid" class="w3-button w3-yellow">แก้ไข</a>
+                <a href="/deleteTourist/@tourist.getTid" class="w3-button w3-red" onclick="return confirm('โปรดยืนยันการลบข้อมูลที่เลือก?')">ลบ</a>
+            </td>
+        </tr>
+
+        <tr>
+            <th ></th>
+            <td align="center">--------------------------------------------------</td>
+        </tr>
+    }
+    </table>
+
+</body>

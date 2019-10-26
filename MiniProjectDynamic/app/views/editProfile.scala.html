@@ -1,0 +1,46 @@
+@(myForm:Form[Member])
+@import helper._;
+<link rel="stylesheet" href="/assets/stylesheets/editM.css">
+<header>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขข้อมูลส่วนตัว</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+</header>
+
+<script type='text/javascript'>
+        function preview_image(event){
+            var reader = new FileReader();
+            reader.onload = function()
+            {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</script>
+@if(flash.containsKey("msgError")){
+    <div class="w3-panel w3-red w3-round-xxlarge">
+        <strong>ผิดพลาด!</strong> @flash.get("msgError")
+    </div>
+}
+<body style="background: #4e555b">
+    @form(action = routes.Application.updateProfile(),'class ->"from-control", 'enctype->"multipart/form-data"){
+        <h1>แก้ไขข้อมูลส่วนตัว</h1>
+        <fieldset>
+            <div class="container" align="center">
+
+        </fieldset>
+        @inputText(myForm("id"),'_label->"Username",'size->"10",'maxlength->"255",'readOnly->"readOnly",'required->"required")
+        @inputText(myForm("password"),'_label->"Password",'size->"10",'maxlength->"255",'required->"required")
+        @inputText(myForm("name"),'_label->"ชื่อ",'size->"10",'maxlength->"255",'required->"required")
+        @inputText(myForm("surname"),'_label->"นามสกุล",'size->"10",'maxlength->"255",'required->"required")
+        @inputText(myForm("email"),'_label->"E-mail",'size->"10",'maxlength->"255",'required->"required")
+        @inputRadioGroup(myForm("gender"),options=Seq("male" -> "ชาย","female"->"หญิง"))
+        <button type="submit" value="บันทึก">Submit</button>
+
+    }<br>
+</body>
+

@@ -1,0 +1,51 @@
+@(pictureList:Form[Pics],touristList:List[Tourist])
+@import helper._;
+<link rel="stylesheet" href="/assets/stylesheets/editM.css">
+<header>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เพิ่มรูปภาพ</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+</header>
+
+<script type='text/javascript'>
+        function preview_image(event){
+            var reader = new FileReader();
+            reader.onload = function()
+            {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</script>
+@if(flash.containsKey("errss")){
+    <div class="w3-panel w3-red w3-round-xxlarge">
+        <strong>ผิดพลาด!</strong> @flash.get("errss")
+    </div>
+}
+<body style="background: #4e555b">
+    @helper.form(action = routes.Application.createPicture(),'class ->"from-control", 'enctype->"multipart/form-data"){
+        <br>
+        <h1 style="font-family: AngsanaUPC">เพิ่มรูปภาพ</h1>
+        <fieldset style="font-family: AngsanaUPC">
+            <div class="container" align="left">
+
+                @inputText(pictureList("Imagejpg"), '_label ->"รหัสภาพ",'required->"required")
+                @inputText(pictureList("Nameimage"), '_label ->"ชื่อภาพ", 'size->"20", 'maxlength->"30", 'required->"required")
+                @textarea(pictureList("Txtimage"),'_label ->"รายละเอียด",'cols->"40", 'rows->"3",'maxlength->"255",'required->"required")
+                @inputDate(pictureList("Dataimage"), '_label ->"วันเวลา",'required->"required")
+                @select(pictureList("tourist.tid"),options=touristList.map(tourist=>tourist.getTid->tourist.getName),'_label -> "สถานที่ท่องเที่ยว")
+                <input type="file" name="myfile" accept="image/*" onchange="preview_image(event)"/>
+                <br><br><img id="preview" class="img-fluid img-thumbnail" style="width: 200px; height: 200px;"/>
+        </fieldset>
+
+        <div class="space-top text-center" align="center">
+            <input type="submit" value="บันทึก" class="w3-button w3-green ">
+            <input type="reset" value="เคลียร์" class="w3-button w3-red">
+        </div>
+
+    }<br>
+</body>
